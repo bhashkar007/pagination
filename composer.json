@@ -1,0 +1,44 @@
+{
+    "name": "hashtagerrors/craft-pagination",
+    "description": "Pagination plugin for Craft 3",
+    "type": "craft-plugin",
+    "version": "1.0.0",
+    "keywords": [
+        "craft",
+        "cms",
+        "craftcms",
+        "craft-plugin",
+        "craft-pagination",
+        "pagination"
+    ],
+    "support": {
+        "docs": "https://github.com/hashtagerrors/craft-pagination/blob/master/README.md",
+        "issues": "https://github.com/hashtagerrors/craft-pagination/issues"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Hashtag Errors",
+            "homepage": "http://hashtagerrors.com"
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^3.0.0-RC1"
+    },
+    "autoload": {
+        "psr-4": {
+          "hashtagerrors\\pagination\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Pagination",
+        "handle": "pagination",
+        "hasCpSettings": true,
+        "hasCpSection": false,
+        "changelogUrl": "https://raw.githubusercontent.com/hashtagerrors/craft-pagination/master/CHANGELOG.md",
+        "components": {
+            "paginationService": "hashtagerrors\\pagination\\services\\PaginationService"
+        },
+        "class": "hashtagerrors\\pagination\\Pagination"
+    }
+}
