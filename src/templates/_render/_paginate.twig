@@ -22,13 +22,13 @@
 
 {% set showPageInfo = options.showPageInfo ?? '' %}
 
-{% set appendUrl = craft.app.request.getQueryStringWithoutPath() ? '?'~craft.app.request.getQueryStringWithoutPath() : '' %}
+{# {% set appendUrl = craft.app.request.getQueryStringWithoutPath() ? '?'~craft.app.request.getQueryStringWithoutPath() : '' %} #}
 
 <ul class="{{ ulClass }}">
     {% if type == 'firstNext' %}
         {% if pageInfo.prevUrl %}
             <li class="{{ liClass }}">
-                <a class="{{ aClass }}" href="{{ pageInfo.prevUrl }}{{ appendUrl }}">{{ prevText|raw }}</a>
+                <a class="{{ aClass }}" href="{{ pageInfo.prevUrl }}">{{ prevText|raw }}</a>
             </li>
         {% endif %}
         {% if showPageInfo %}
@@ -36,73 +36,73 @@
         {% endif %}
         {% if pageInfo.nextUrl %}
             <li class="{{ liClass }}">
-                <a class="{{ aClass }}" href="{{ pageInfo.nextUrl }}{{ appendUrl }}">{{ nextText|raw }}</a>
+                <a class="{{ aClass }}" href="{{ pageInfo.nextUrl }}">{{ nextText|raw }}</a>
             </li>
         {% endif %}
     {% elseif type == 'ellipsis' %}
         {% if pageInfo.prevUrl %}
             <li class="{{ liClass }}">
-                <a class="{{ aClass }}" href="{{ pageInfo.prevUrl }}{{ appendUrl }}">{{ prevText|raw }}</a>
+                <a class="{{ aClass }}" href="{{ pageInfo.prevUrl }}">{{ prevText|raw }}</a>
             </li>
         {% endif %}
         {% if pageInfo.currentPage > pageRange + 1 %}
             <li class="{{ liClass }}">
-                <a class="{{ aClass }}" href="{{ pageInfo.firstUrl }}{{ appendUrl }}">1</a>
+                <a class="{{ aClass }}" href="{{ pageInfo.firstUrl }}">1</a>
             </li>
         {% endif %}
         {% if pageInfo.currentPage > pageRange + 2 %}
             <span class="pageEllipsis">...</span>
         {% endif %}
         {% for page, url in pageInfo.getPrevUrls(pageRange) %}
-            <li class="{{ liClass }}"><a class="{{ aClass }}" href="{{ url }}{{ appendUrl }}">{{ page }}</a></li>
+            <li class="{{ liClass }}"><a class="{{ aClass }}" href="{{ url }}">{{ page }}</a></li>
         {% endfor %}
         <li class="{{ liClass }} {{ activeClass }}">
             <a class="{{ aClass }}" href="javascript:void(0);">{{ pageInfo.currentPage }}</a>
         </li>
         {% for page, url in pageInfo.getNextUrls(pageRange) %}
-            <li class="{{ liClass }}"><a class="{{ aClass }}" href="{{ url }}{{ appendUrl }}">{{ page }}</a></li>
+            <li class="{{ liClass }}"><a class="{{ aClass }}" href="{{ url }}">{{ page }}</a></li>
         {% endfor %}
         {% if pageInfo.currentPage < pageInfo.totalPages-(pageRange + 1) %}
             <span class="pageEllipsis">...</span>
         {% endif %}
         {% if pageInfo.currentPage < pageInfo.totalPages-pageRange %}
             <li class="{{ liClass }}">
-                <a class="{{ aClass }}" href="{{ pageInfo.lastUrl }}{{ appendUrl }}">{{ pageInfo.totalPages }}</a>
+                <a class="{{ aClass }}" href="{{ pageInfo.lastUrl }}">{{ pageInfo.totalPages }}</a>
             </li>
         {% endif %}
         {% if pageInfo.nextUrl %}
             <li class="{{ liClass }}">
-                <a class="{{ aClass }}" href="{{ pageInfo.nextUrl }}{{ appendUrl }}">{{ nextText|raw }}</a>
+                <a class="{{ aClass }}" href="{{ pageInfo.nextUrl }}">{{ nextText|raw }}</a>
             </li>
         {% endif %}
     {% else %}
         {% if includeFirstLast %} 
             <li class="{{ liClass }}">
-                <a class="{{ aClass }}" href="{{ pageInfo.firstUrl }}{{ appendUrl }}">{{ firstText|raw }}</a>
+                <a class="{{ aClass }}" href="{{ pageInfo.firstUrl }}">{{ firstText|raw }}</a>
             </li>
         {% endif %}
         {% if includePrevNext and pageInfo.prevUrl %}
             <li class="{{ liClass }}">
-                <a class="{{ aClass }}" href="{{ pageInfo.prevUrl }}{{ appendUrl }}">{{ prevText|raw }}</a>
+                <a class="{{ aClass }}" href="{{ pageInfo.prevUrl }}">{{ prevText|raw }}</a>
             </li>
         {% endif %}
         {% for page, url in pageInfo.getPrevUrls(pageRange) %}
-            <li class="{{ liClass }}"><a class="{{ aClass }}" href="{{ url }}{{ appendUrl }}">{{ page }}</a></li>
+            <li class="{{ liClass }}"><a class="{{ aClass }}" href="{{ url }}">{{ page }}</a></li>
         {% endfor %}
         <li class="{{ liClass }} {{ activeClass }}">
             <a class="{{ aClass }}" href="javascript:void(0);">{{ pageInfo.currentPage }}</a>
         </li>
         {% for page, url in pageInfo.getNextUrls(pageRange) %}
-            <li class="{{ liClass }}"><a class="{{ aClass }}" href="{{ url }}{{ appendUrl }}">{{ page }}</a></li>
+            <li class="{{ liClass }}"><a class="{{ aClass }}" href="{{ url }}">{{ page }}</a></li>
         {% endfor %}
         {% if includePrevNext and pageInfo.nextUrl %}
             <li class="{{ liClass }}">
-                <a class="{{ aClass }}" href="{{ pageInfo.nextUrl }}{{ appendUrl }}">{{ nextText|raw }}</a>
+                <a class="{{ aClass }}" href="{{ pageInfo.nextUrl }}">{{ nextText|raw }}</a>
             </li>
         {% endif %}
         {% if includeFirstLast %} 
             <li class="{{ liClass }}">
-                <a class="{{ aClass }}" href="{{ pageInfo.lastUrl }}{{ appendUrl }}">{{ lastText|raw }}</a>
+                <a class="{{ aClass }}" href="{{ pageInfo.lastUrl }}">{{ lastText|raw }}</a>
             </li>
         {% endif %}
     {% endif %}
